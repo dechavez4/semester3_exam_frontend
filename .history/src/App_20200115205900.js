@@ -288,13 +288,13 @@ const Edit = () => {
     facade.fetchCourseToDeleteById(id).then(res => setFindCourse(res));
   }
 
-  //dette er til delete Class
+//dette er til delete Class
   const handleSubmitDeleteClass = event => {
     event.preventDefault();
     facade.fetchClassmToDeleteById(id).then(res => setFindClassm(res));
   }
 
-
+  
 
   useEffect(() => {
     facade.fetchAllDataAboutCourse().then(res => setListCourse(res));
@@ -331,26 +331,21 @@ const Edit = () => {
           </tbody>
         </table>
         <div className="col-md-6">
+          <h4>Add a Course</h4>
+
           <h4>Delete Course by ID</h4>
           <input type="text" name="id" placeholder="Type in an ID" onChange={handleChange}></input>
           <button onClick={handleSubmitDeleteCourse}>Delete by ID</button>
-          <hr />
+
           <h4>add Course</h4>
-          <input className="col-md-4" type="text" name="courseName" placeholder="Type a courseName"></input><br />
-          <input className="col-md-4" type="text" name="description" placeholder="write a small description"></input><br />
-          <button>Add</button>
+            <input type="text" name="courseName" placeholder="Type a courseName"></input>
+            <input type="text" name="description" placeholder="write a small description"></input>
+            <button>Add</button>
         </div>
         <div className="col-md-6">
-          <h3>Delete Classs by ID</h3>
+          <h3>Find and Edit Class</h3>
           <input type="text" name="id" placeholder="Type in an ID" onChange={handleChange}></input>
           <button onClick={handleSubmitDeleteClass}>Delete by ID</button>
-
-          <hr />
-
-          <h4>add Class</h4>
-          <input className="col-md-4" type="text" name="Semester" name="Semester name" placeholder="Type semester name"></input><br/>
-          <input className="col-md-4" type="text" name="MaxNum" placeholder="type amount of student"></input><br/>
-          <button>Add</button>
         </div>
       </div>
     </div >

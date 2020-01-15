@@ -1,5 +1,4 @@
-//const URL = "https://renzcph.dk/fullstack";
-const URL = "http://localhost:8080/fullstack_spa";
+const URL = "https://renzcph.dk/fullstack";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -79,24 +78,6 @@ function apiFacade() {
     }
     return opts;
   };
-
-//dette er fetch for at hele alle info om courses
-  const fetchAllDataAboutCourse = () => {
-    const options = makeOptions("GET", true);
-    return fetch(URL + "/api/school/all", options).then(handleHttpErrors);
-  }
-
-//dette er fetch til at slette en course
-const fetchCourseToDeleteById = (id) => {
-  const options = makeOptions("DELETE", true);
-  return fetch(URL + "/api/school/delete/" + id, options).then(handleHttpErrors); 
-}
-
-//dette er fetch til at slette en classm
-const fetchClassmToDeleteById = (id) => {
-  const options = makeOptions("DELETE", true);
-  return fetch(URL + "/api/school/delete/classm/" + id, options).then(handleHttpErrors);
-}
   return {
     makeOptions,
     setToken,
@@ -107,10 +88,7 @@ const fetchClassmToDeleteById = (id) => {
     fetchData,
     getRole,
     fetchPeople,
-    getUser,
-    fetchAllDataAboutCourse,
-    fetchCourseToDeleteById,
-    fetchClassmToDeleteById
+    getUser
   };
 }
 const facade = apiFacade();

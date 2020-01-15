@@ -86,16 +86,10 @@ function apiFacade() {
     return fetch(URL + "/api/school/all", options).then(handleHttpErrors);
   }
 
-//dette er fetch til at slette en course
+//dette er fetch at slette en course
 const fetchCourseToDeleteById = (id) => {
   const options = makeOptions("DELETE", true);
-  return fetch(URL + "/api/school/delete/" + id, options).then(handleHttpErrors); 
-}
-
-//dette er fetch til at slette en classm
-const fetchClassmToDeleteById = (id) => {
-  const options = makeOptions("DELETE", true);
-  return fetch(URL + "/api/school/delete/classm/" + id, options).then(handleHttpErrors);
+  return fetch(URL+ "/api/school/delete" + id, options).then(handleHttpErrors);
 }
   return {
     makeOptions,
@@ -109,8 +103,7 @@ const fetchClassmToDeleteById = (id) => {
     fetchPeople,
     getUser,
     fetchAllDataAboutCourse,
-    fetchCourseToDeleteById,
-    fetchClassmToDeleteById
+    fetchCourseToDeleteById
   };
 }
 const facade = apiFacade();

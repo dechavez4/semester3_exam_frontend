@@ -95,7 +95,7 @@ const fetchCourseToDeleteById = (id) => {
 //dette er fetch til at slette en classm
 const fetchClassmToDeleteById = (id) => {
   const options = makeOptions("DELETE", true);
-  return fetch(URL + "/api/school/delete/classm/" + id, options).then(handleHttpErrors);
+  return fetch(URL + "/api/school/delete/classm" + id, options).then(handleHttpErrors);
 }
   return {
     makeOptions,

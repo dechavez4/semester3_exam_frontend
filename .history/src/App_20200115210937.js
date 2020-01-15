@@ -341,7 +341,7 @@ const Edit = () => {
           <button>Add</button>
         </div>
         <div className="col-md-6">
-          <h3>Delete Classs by ID</h3>
+          <h3>Delete a Class</h3>
           <input type="text" name="id" placeholder="Type in an ID" onChange={handleChange}></input>
           <button onClick={handleSubmitDeleteClass}>Delete by ID</button>
 

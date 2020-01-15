@@ -5,6 +5,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Switch,
   Route,
+  useRouteMatch,
+  useParams,
+  Link,
+  Prompt,
   NavLink,
   useHistory
 } from "react-router-dom";
@@ -268,92 +272,11 @@ const People = () => {
   );
 };
 
-
-
 const Edit = () => {
-  const [id, setId] = useState();
-  const [FindCourse, setFindCourse] = useState([]);
-  const [FindClassm, setFindClassm] = useState([]);
-  const [listCourse, setListCourse] = useState([]);
-
-  const handleChange = event => {
-    const target = event.target;
-    const value = target.value;
-    setId(value);
-  }
-
-  //dette er til delete en course
-  const handleSubmitDeleteCourse = event => {
-    event.preventDefault();
-    facade.fetchCourseToDeleteById(id).then(res => setFindCourse(res));
-  }
-
-  //dette er til delete Class
-  const handleSubmitDeleteClass = event => {
-    event.preventDefault();
-    facade.fetchClassmToDeleteById(id).then(res => setFindClassm(res));
-  }
-
-
-
-  useEffect(() => {
-    facade.fetchAllDataAboutCourse().then(res => setListCourse(res));
-  }, []);
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <table className="table col-md-12">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Course Name</th>
-              <th>Course Description</th>
-              <th>semester</th>
-            </tr>
-          </thead>
-          <tbody>
-            {listCourse.map((course, index) => {
-              return (
-                <tr key={index}>
-                  <td>{course.id}</td>
-                  <td>{course.courseName}</td>
-                  <td>{course.description}</td>
-                  {course.classms.map((classm, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{classm.semester}</td>
-                      </tr>
-                    )
-                  })}
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-        <div className="col-md-6">
-          <h4>Delete Course by ID</h4>
-          <input type="text" name="id" placeholder="Type in an ID" onChange={handleChange}></input>
-          <button onClick={handleSubmitDeleteCourse}>Delete by ID</button>
-          <hr />
-          <h4>add Course</h4>
-          <input className="col-md-4" type="text" name="courseName" placeholder="Type a courseName"></input><br />
-          <input className="col-md-4" type="text" name="description" placeholder="write a small description"></input><br />
-          <button>Add</button>
-        </div>
-        <div className="col-md-6">
-          <h3>Delete Classs by ID</h3>
-          <input type="text" name="id" placeholder="Type in an ID" onChange={handleChange}></input>
-          <button onClick={handleSubmitDeleteClass}>Delete by ID</button>
-
-          <hr />
-
-          <h4>add Class</h4>
-          <input className="col-md-4" type="text" name="Semester" name="Semester name" placeholder="Type semester name"></input><br/>
-          <input className="col-md-4" type="text" name="MaxNum" placeholder="type amount of student"></input><br/>
-          <button>Add</button>
-        </div>
-      </div>
-    </div >
+    <div>
+      <h3>Find and Edit</h3>
+    </div>
   );
 };
 
@@ -365,8 +288,10 @@ const Courses = () => {
   }, []);
   return (
     <div>
+      <h2>this shows the data of all info about courses</h2>
       <p>{JSON.stringify(listCourse)}</p>
-      <table className="table">
+
+      <table>
         <thead>
           <tr>
             <th>Course Name</th>
@@ -380,13 +305,12 @@ const Courses = () => {
               <tr key={index}>
                 <td>{course.courseName}</td>
                 <td>{course.description}</td>
-                {course.classms.map((classm, index) => {
+                {listCourse.classms.map((classm, index) => {
                   return (
-                    <tr key={index}>
-                      <td>{classm.semester}</td>
-                    </tr>
+                    <td>{classm.semester}</td>
                   )
                 })}
+                {console.log(listCourse)}
               </tr>
             )
           })}

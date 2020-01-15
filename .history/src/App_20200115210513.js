@@ -331,6 +331,8 @@ const Edit = () => {
           </tbody>
         </table>
         <div className="col-md-6">
+          <h4>Add a Course</h4>
+
           <h4>Delete Course by ID</h4>
           <input type="text" name="id" placeholder="Type in an ID" onChange={handleChange}></input>
           <button onClick={handleSubmitDeleteCourse}>Delete by ID</button>
@@ -341,16 +343,16 @@ const Edit = () => {
           <button>Add</button>
         </div>
         <div className="col-md-6">
-          <h3>Delete Classs by ID</h3>
+          <h3>Find and Edit Class</h3>
           <input type="text" name="id" placeholder="Type in an ID" onChange={handleChange}></input>
           <button onClick={handleSubmitDeleteClass}>Delete by ID</button>
 
           <hr />
 
           <h4>add Class</h4>
-          <input className="col-md-4" type="text" name="Semester" name="Semester name" placeholder="Type semester name"></input><br/>
-          <input className="col-md-4" type="text" name="MaxNum" placeholder="type amount of student"></input><br/>
-          <button>Add</button>
+          <input type="text" name="Semester" name="Semester name" placeholder="Type semester name"></input><br/>
+          <input type="text" name="MaxNum" placeholder="type amount of student"></input><br/>
+          <button></button>
         </div>
       </div>
     </div >
