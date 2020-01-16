@@ -164,8 +164,8 @@ const Header = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink activeClassName="active" to="/student">
-          Student
+        <NavLink activeClassName="active" to="/people">
+          People
         </NavLink>
       </li>
       <li>
@@ -229,7 +229,7 @@ const Student = () => {
       setMyself(res); 
       console.log(mySelf);
     });
-  }, []);
+  }, [mySelf]);
  /* useEffect(() => {
     let didCancel = false;
     facade.fetchPeople().then(res => {

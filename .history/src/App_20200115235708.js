@@ -164,8 +164,8 @@ const Header = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink activeClassName="active" to="/student">
-          Student
+        <NavLink activeClassName="active" to="/people">
+          People
         </NavLink>
       </li>
       <li>
@@ -193,8 +193,8 @@ const Content = ({ logout }) => {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/student">
-        <Student />
+      <Route path="/people">
+        <People />
       </Route>
       <Route path="/courses">
         <Courses />
@@ -220,17 +220,17 @@ const Home = () => {
   );
 };
 
-const Student = () => {
-  const [mySelf, setMyself] = useState({email: "", id: 0, name: ""});
+const People = () => {
+  const [dataFromServer, setDataFromServer] = useState("Fetching...");
+  const [listPeople, setListPeople] = useState([]);
+  const [mySelf, setMyself] = useState();
 
   useEffect(() => {
-    //facade.fetchData().then(res => setDataFromServer(res.msg));
-    facade.fetchMyself(facade.getTokenInfo().username).then(res => {
-      setMyself(res); 
-      console.log(mySelf);
-    });
+    facade.fetchData().then(res => setDataFromServer(res.msg));
+    console.log(facade.getTokenInfo().username);
+    facade.fetchMyself(facade.getTokenInfo().username).then(res => {setMyself(res); console.log(mySelf)});
   }, []);
- /* useEffect(() => {
+  useEffect(() => {
     let didCancel = false;
     facade.fetchPeople().then(res => {
       if (didCancel === false) {
@@ -241,11 +241,12 @@ const Student = () => {
     return () => {
       didCancel = true;
     };
-  }, []);*/
+  }, []);
   return (
     <div>
       <h2>Data Received from server</h2>
-      <h3></h3>
+      <h3>{dataFromServer}</h3>
+      <p>{JSON.stringify(listPeople)}</p>
       <table className="table">
         <thead>
           <tr>
@@ -255,11 +256,15 @@ const Student = () => {
           </tr>
         </thead>
         <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+          {listPeople.map((person, index) => {
+            return (
+              <tr key={index}>
+                <td>{person.name}</td>
+                <td>{person.height}</td>
+                <td>{person.gender}</td>
               </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

@@ -15,14 +15,6 @@ function apiFacade() {
   const getToken = () => {
     return localStorage.getItem("jwtToken");
   };
-
-  const getTokenInfo = () => {
-    let jwt = localStorage.getItem("jwtToken");
-    let jwtData = jwt.split(".")[1];
-    let decodedJwtJsonData = window.atob(jwtData);
-    let decodedJWTData = JSON.parse(decodedJwtJsonData);
-    return decodedJWTData;
-  };
   const getRole = () => {
     let jwt = localStorage.getItem("jwtToken");
     let jwtData = jwt.split(".")[1];
@@ -97,7 +89,7 @@ function apiFacade() {
 //dette fetch er til add en course
 const fetchAddCourse = (CourseDTO) => {
   const options = makeOptions("POST", true, CourseDTO);
-  return fetch(URL + "/api/school/course/add", options).then(handleHttpErrors);
+  return fetch(URL + "/api/school/")
 }
 
 //dette er fetch til at slette en course
@@ -111,18 +103,6 @@ const fetchClassmToDeleteById = (id) => {
   const options = makeOptions("DELETE", true);
   return fetch(URL + "/api/school/delete/classm/" + id, options).then(handleHttpErrors);
 }
-
-//dette er for at hente en enkelt student info
-const fetchStudenById = (id) => {
-  const options = makeOptions("GET", true);
-  return fetch(URL + "/api/school/studentid/" + id, options).then(handleHttpErrors);
-}
-
-const fetchMyself = (username) => {
-  const options = makeOptions("GET", true);
-  return fetch(URL + "/api/school/studentid/" + username, options).then(handleHttpErrors);
-}
-
   return {
     makeOptions,
     setToken,
@@ -136,11 +116,7 @@ const fetchMyself = (username) => {
     getUser,
     fetchAllDataAboutCourse,
     fetchCourseToDeleteById,
-    fetchClassmToDeleteById,
-    fetchAddCourse,
-    fetchStudenById,
-    getTokenInfo,
-    fetchMyself
+    fetchClassmToDeleteById
   };
 }
 const facade = apiFacade();

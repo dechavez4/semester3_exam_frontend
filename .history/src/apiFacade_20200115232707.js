@@ -139,8 +139,7 @@ const fetchMyself = (username) => {
     fetchClassmToDeleteById,
     fetchAddCourse,
     fetchStudenById,
-    getTokenInfo,
-    fetchMyself
+    getTokenInfo
   };
 }
 const facade = apiFacade();

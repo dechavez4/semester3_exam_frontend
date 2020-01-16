@@ -120,6 +120,7 @@ const fetchStudenById = (id) => {
 
 const fetchMyself = (username) => {
   const options = makeOptions("GET", true);
+  console.log(URL + "/api/school/studentid/" + username);
   return fetch(URL + "/api/school/studentid/" + username, options).then(handleHttpErrors);
 }
 

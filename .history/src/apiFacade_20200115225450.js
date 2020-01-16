@@ -117,12 +117,6 @@ const fetchStudenById = (id) => {
   const options = makeOptions("GET", true);
   return fetch(URL + "/api/school/studentid/" + id, options).then(handleHttpErrors);
 }
-
-const fetchMyself = (username) => {
-  const options = makeOptions("GET", true);
-  return fetch(URL + "/api/school/studentid/" + username, options).then(handleHttpErrors);
-}
-
   return {
     makeOptions,
     setToken,
@@ -139,8 +133,7 @@ const fetchMyself = (username) => {
     fetchClassmToDeleteById,
     fetchAddCourse,
     fetchStudenById,
-    getTokenInfo,
-    fetchMyself
+    getTokenInfo
   };
 }
 const facade = apiFacade();

@@ -15,14 +15,6 @@ function apiFacade() {
   const getToken = () => {
     return localStorage.getItem("jwtToken");
   };
-
-  const getTokenInfo = () => {
-    let jwt = localStorage.getItem("jwtToken");
-    let jwtData = jwt.split(".")[1];
-    let decodedJwtJsonData = window.atob(jwtData);
-    let decodedJWTData = JSON.parse(decodedJwtJsonData);
-    return decodedJWTData;
-  };
   const getRole = () => {
     let jwt = localStorage.getItem("jwtToken");
     let jwtData = jwt.split(".")[1];
@@ -117,12 +109,6 @@ const fetchStudenById = (id) => {
   const options = makeOptions("GET", true);
   return fetch(URL + "/api/school/studentid/" + id, options).then(handleHttpErrors);
 }
-
-const fetchMyself = (username) => {
-  const options = makeOptions("GET", true);
-  return fetch(URL + "/api/school/studentid/" + username, options).then(handleHttpErrors);
-}
-
   return {
     makeOptions,
     setToken,
@@ -138,9 +124,7 @@ const fetchMyself = (username) => {
     fetchCourseToDeleteById,
     fetchClassmToDeleteById,
     fetchAddCourse,
-    fetchStudenById,
-    getTokenInfo,
-    fetchMyself
+    fetchStudenById
   };
 }
 const facade = apiFacade();

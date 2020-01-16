@@ -164,8 +164,8 @@ const Header = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink activeClassName="active" to="/student">
-          Student
+        <NavLink activeClassName="active" to="/people">
+          People
         </NavLink>
       </li>
       <li>
@@ -221,6 +221,8 @@ const Home = () => {
 };
 
 const Student = () => {
+  const [dataFromServer, setDataFromServer] = useState("Fetching...");
+  const [listPeople, setListPeople] = useState([]);
   const [mySelf, setMyself] = useState({email: "", id: 0, name: ""});
 
   useEffect(() => {
@@ -229,7 +231,7 @@ const Student = () => {
       setMyself(res); 
       console.log(mySelf);
     });
-  }, []);
+  }, [mySelf]);
  /* useEffect(() => {
     let didCancel = false;
     facade.fetchPeople().then(res => {

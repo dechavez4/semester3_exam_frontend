@@ -119,7 +119,7 @@ const fetchStudenById = (id) => {
 }
 
 const fetchMyself = (username) => {
-  const options = makeOptions("GET", true);
+  const options = makeOptions("GET", true, username);
   return fetch(URL + "/api/school/studentid/" + username, options).then(handleHttpErrors);
 }
 

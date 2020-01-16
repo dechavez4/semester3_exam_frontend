@@ -229,7 +229,7 @@ const Student = () => {
       setMyself(res); 
       console.log(mySelf);
     });
-  }, []);
+  }, [mySelf]);
  /* useEffect(() => {
     let didCancel = false;
     facade.fetchPeople().then(res => {
